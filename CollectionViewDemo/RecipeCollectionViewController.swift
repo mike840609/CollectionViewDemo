@@ -180,6 +180,26 @@ class RecipeCollectionViewController: UICollectionViewController {
         return true
     }
     
+    
+    
+    // 判斷直立,橫向 尺寸類別 ６plus 則改變 cell 大小,以容納更多 cell
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let sideSize = (traitCollection.horizontalSizeClass == .Compact && traitCollection.verticalSizeClass == .Regular) ? 80.0 : 128.0
+        
+        /*  改變排列顯示
+        let collectionViewSize = collectionView.frame.size
+        let collectionViewArea = Double(collectionViewSize.width * collectionViewSize.height)
+        let sideSize: Double = sqrt(collectionViewArea / (Double(doodleImages.count))) - 30.0
+        */
+        
+        return CGSize(width: sideSize, height: sideSize)
+    }
+    
+    // 對尺寸類別變更進行回應
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.reloadData()
+    }
     @IBAction  func unwindToHomeScreen(segue:UIStoryboardSegue){
         
     }

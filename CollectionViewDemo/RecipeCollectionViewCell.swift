@@ -8,7 +8,10 @@
 
 import UIKit
 
+
 class RecipeCollectionViewCell: UICollectionViewCell {
+
+    // CollectionView Cell
     @IBOutlet weak var recipeImageView:UIImageView!
     
 }
